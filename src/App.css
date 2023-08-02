@@ -1,12 +1,40 @@
 .App {
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  flex-direction: column; /* This will stack items vertically */
+  gap: 20px; /* Add some spacing between items */
+  height: 100vh;
+  margin-top: 50px;
+  font-size: 1.5rem;
 }
 
+.board {
+  display: grid;
+  grid-template: repeat(8, 50px) / repeat(8, 50px); /* Specify size of cells */
+  gap: 2px;
+  width: 400px; /* Size of the board */
+  height: 400px; /* Size of the board */
 }
 
+.cell {
   display: flex;
   justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  background-color: white;
 }
 
+.cell.p { background-color: purple; }
+.cell.b { background-color: blue; }
+.cell.y { background-color: yellow; }
+.cell.r { background-color: red; }
+.cell.g { background-color: green; }
+
+.cell.selected {
+  box-shadow: 0px 0px 10px 5px gray;
 }
 
+.cell.goal {
+  background-color: gray;
 }
