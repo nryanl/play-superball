@@ -141,11 +141,6 @@ function App() {
     return set;
   };
 
-  // Helper function
-  function isColoredCell(cell) {
-    return colors.includes(cell);
-  }
-
   const handleScore = () => {
     if (selectedCells.length !== 1) {
       alert("You must select exactly one cell to score.");
