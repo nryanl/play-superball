@@ -65,6 +65,12 @@ function App() {
   };
 
   const handleSwap = () => {
+
+    // If the board is full and the player does a swap, end the game.
+    if (isBoardFull()) {
+      setIsGameOver(true);
+    }
+
     if (selectedCells.length !== 2) {
       alert("You must select exactly two cells to swap.");
       return;
@@ -95,11 +101,6 @@ function App() {
         newBoard[i][j] = colors[Math.floor(Math.random() * colors.length)];
         count++;
       }
-    }
-    
-    // After the swap, check if the game is over
-    if (isBoardFull()) {
-      setIsGameOver(true);
     }
 
     // Update the board and clear the selected cells
