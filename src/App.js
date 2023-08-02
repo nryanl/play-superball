@@ -170,6 +170,18 @@ function App() {
     const pointsEarned = colorValue * set.length;
     setScore(score => score + pointsEarned);
 
+    // Color 3 random uncolored squares
+    let count = 0;
+    while (count < 3) {
+      if (isBoardFull()) break;
+      const i = Math.floor(Math.random() * 8);
+      const j = Math.floor(Math.random() * 8);
+      if (newBoard[i][j] === '.' || newBoard[i][j] === '*') {
+        newBoard[i][j] = colors[Math.floor(Math.random() * colors.length)];
+        count++;
+      }
+    }
+
     // Update the board and clear the selected cells
     setBoard(newBoard);
     setSelectedCells([]);
