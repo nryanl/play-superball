@@ -20,7 +20,7 @@ function App() {
   const [score, setScore] = useState(0);
   const [isGameOver, setIsGameOver] = useState(false);
 
-  const checkGameOver = () => {
+  const isBoardFull = () => {
     for (let row of board) {
       if (row.includes('.') || row.includes('*')) {
         return false;
@@ -88,6 +88,7 @@ function App() {
     // Color 5 random uncolored squares
     let count = 0;
     while (count < 5) {
+      if (isBoardFull()) break;
       const i = Math.floor(Math.random() * 8);
       const j = Math.floor(Math.random() * 8);
       if (newBoard[i][j] === '.' || newBoard[i][j] === '*') {
@@ -95,15 +96,15 @@ function App() {
         count++;
       }
     }
+    
+    // After the swap, check if the game is over
+    if (isBoardFull()) {
+      setIsGameOver(true);
+    }
 
     // Update the board and clear the selected cells
     setBoard(newBoard);
     setSelectedCells([]);
-
-    // After the swap, check if the game is over
-    if (checkGameOver()) {
-      setIsGameOver(true);
-    }
 
   };
 
